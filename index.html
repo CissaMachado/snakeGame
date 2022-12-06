@@ -12,16 +12,24 @@
         <div class="wrapper">
           <button id="replay">
             REPLAY
+        </button>
+          <button id="level">
+            LEVEL:  <span id="spanLevel">01</span>
           </button>
+          <button id="border">
+            BORDER: <span id="spanBorder">No</span>
+          </button>
+        </div>
           <div id="canvas">
             <canvas id="game" width="500" height="500"></canvas>
+              <div id="gameover" class="blink" style="display:none;">
+              GAME OVER!<br />
           </div>
           <div id="points">
             <h2>SCORE
             </h2>
             <span id="score">00</span>
           </div>
-        </div>
         <div id="author">
           <h1>SNAKE</h1> <span>by Cissa</span>
         </div>
