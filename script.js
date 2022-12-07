@@ -100,6 +100,7 @@ function createSquare() {
 
 document.addEventListener('keydown', update);
 
+// Direções percorridas pela cobra
 function update(event){
     if (!end) {
         if(event.keyCode == 37 && direction != "right") direction = "left";
@@ -109,6 +110,67 @@ function update(event){
     }
 }
 
-createBG();
-createSnake();
-createSquare();
+function startGame() {    
+
+  if (!border) {
+      if(snake[0].x > 15 * box && direction !== "left") snake[0].x = 0;
+      if(snake[0].x < 0 && direction != "right") snake[0].x = 15 * box;
+      if(snake[0].y > 15 * box && direction != "up") snake[0].y = 0;
+      if(snake[0].y < 0 && direction != "down") snake[0].y = 15 * box;
+  } else {
+      if(snake[0].x > 15 * box) gameOver();
+      if(snake[0].x < 0) gameOver();
+      if(snake[0].y > 15 * box) gameOver();
+      if(snake[0].y < 0) gameOver();
+  }
+  
+
+  //se a posição 0 (cabeça) se chocar com o corpo, para o jogo
+  for (i = 1; i < snake.length; i++){
+      if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) gameOver();
+  }
+
+  createBG();
+  createSnake();
+  createSquare();
+
+  // posição cobra 
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  // movimentação da cobra
+  if(direction == "right") snakeX += box;
+  if(direction == "left") snakeX -= box;
+  if(direction == "up") snakeY -= box;
+  if(direction == "down") snakeY += box;    
+
+  // crescimento da cobra
+  if(snakeX != square.x || snakeY != square.y){
+      /**
+       * se o lugar da cobra for diferente do quadradinhos,
+       * ela continua em movimento (removendo um item do array).
+       */
+      snake.pop();
+  } else {
+      // se não, não irá remover o item do array e vai para outra posição aleatória      
+      square.x = Math.floor(Math.random() * 15 + 1) * box;
+      square.y = Math.floor(Math.random() * 15 + 1) * box;
+
+      score++;
+      spanScore.innerHTML = score;
+  }
+
+  let newHead = {
+      x: snakeX,
+      y: snakeY
+  }
+
+  snake.unshift(newHead);
+}
+
+function gameOver() {
+  clearInterval(canvas);       
+  fim = true;                 // define que o jogo acabou (para não funcionarem os outros botões)
+  gameover.style.display = "flex";
+}
+let game = setInterval(startGame, vel);
