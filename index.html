@@ -8,31 +8,49 @@
     <title>Jogo da Cobrinha</title>
   </head>
   <body>
-    <div class="container noselect">
-        <div class="wrapper">
+    <div class="container noselect">  
+      
+      <div class="wrapper">
+        
+        <div>
           <button id="replay">
             REPLAY
-        </button>
+          </button>
+        </div>
+
+        <div>
           <button id="level">
             LEVEL:  <span id="spanLevel">01</span>
           </button>
+        </div>
+
+        <div>
           <button id="border">
             BORDER: <span id="spanBorder">No</span>
           </button>
         </div>
-          <div id="canvas">
-            <canvas id="game" width="500" height="500"></canvas>
+
+        </div>
+
+          <div id="game">
+            <canvas id="canvas" width="500" height="500"></canvas>
               <div id="gameover" class="blink" style="display:none;">
               GAME OVER!<br />
+              <span>Click on Replay Button to restart</span>
           </div>
+
           <div id="points">
             <h2>SCORE
             </h2>
             <span id="score">00</span>
           </div>
+
         <div id="author">
           <h1>SNAKE</h1> <span>by Cissa</span>
         </div>
+
       </div>
+
+    </div>
       <script src="./script.js"></script>
 </html>
