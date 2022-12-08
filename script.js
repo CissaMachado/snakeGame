@@ -111,7 +111,6 @@ function update(event){
 }
 
 function startGame() {    
-
   if (!border) {
       if(snake[0].x > 15 * box && direction !== "left") snake[0].x = 0;
       if(snake[0].x < 0 && direction != "right") snake[0].x = 15 * box;
@@ -168,9 +167,15 @@ function startGame() {
   snake.unshift(newHead);
 }
 
-function gameOver() {
+//function modalAlert(){
+   //swal("Here's the title!", "...and here's the text!");}
+   
+
+
+function gameOver() {;
+  //modalAlert();
   clearInterval(canvas);       
-  fim = true;                 // define que o jogo acabou (para não funcionarem os outros botões)
-  gameover.style.display = "flex";
+  end = true;   
+ 
 }
 let game = setInterval(startGame, vel);
