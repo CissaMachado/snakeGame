@@ -1,3 +1,4 @@
+
 // puxando os elementos canva do css
 let canvas = document.querySelector("#canvas");
 let ctx = canvas.getContext("2d");
@@ -44,7 +45,7 @@ btnReplay.onclick = function(){
 }
 // add uma borda, ou seja, a cobra só terá um detrminado espaço de atuação
 btnBorder.onclick = function(){    
-  if (!end) {
+    if (!end) {
       if (!border) {
           border = true;
           canvas.classList.add('border');
@@ -110,7 +111,7 @@ function update(event){
     }
 }
 
-function startGame() {    
+function startGame() {  
   if (!border) {
       if(snake[0].x > 15 * box && direction !== "left") snake[0].x = 0;
       if(snake[0].x < 0 && direction != "right") snake[0].x = 15 * box;
@@ -124,7 +125,7 @@ function startGame() {
   }
   
 
-  //se a posição 0 (cabeça) se chocar com o corpo, para o jogo
+  //se a posição 0 da cabeça, irá se chocar com o corpo, para o jogo
   for (i = 1; i < snake.length; i++){
       if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) gameOver();
   }
@@ -167,15 +168,10 @@ function startGame() {
   snake.unshift(newHead);
 }
 
-//function modalAlert(){
-   //swal("Here's the title!", "...and here's the text!");}
-   
-
-
-function gameOver() {;
-  //modalAlert();
-  clearInterval(canvas);       
-  end = true;   
- 
+function gameOver() {
+    clearInterval(game);        
+    end = true;                 
+    swal ( "GAME OVER" ,  "clique no botão replay" ,  "error" )
+    
 }
 let game = setInterval(startGame, vel);
