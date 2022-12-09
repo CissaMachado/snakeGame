@@ -86,14 +86,24 @@ function createBG() {
 //criar a cobrinha
 function createSnake() {
   for(i=0; i < snake.length; i++){
-      ctx.fillStyle = 'white';
+      ctx.fillStyle = generateColor();
       ctx.fillRect(snake[i].x, snake[i].y, box, box)        
       ctx.strokeStyle = '#6e7888';
       ctx.strokeRect(snake[i].x, snake[i].y, box, box)
   }
 }
+
+function generateColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }  
+    return color;  
+}
+
 function createSquare() {
-  ctx.fillStyle = "#6e7888";
+  ctx.fillStyle = generateColor();
   ctx.fillRect(square.x, square.y, box, box);
   ctx.strokeStyle = 'white';
   ctx.strokeRect(square.x, square.y, box, box)
