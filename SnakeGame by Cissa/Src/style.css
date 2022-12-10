@@ -10,7 +10,7 @@ button:focus {
 }
 
 canvas.border {
-  border: 2px solid #22836e;
+  border: 5px solid #22836e;
 }
 
 html,
@@ -51,6 +51,27 @@ h2 {
   font-size: 2rem;
 }
 #score {
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 900;
+}
+#bestScore {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  flex-flow: column;
+  margin-left: 10px;
+  position: absolute;
+  width: 70px;
+  height: 65px;
+  left: 1150px;
+  top: 450px;
+}
+h2 {
+  font-weight: 100;
+  font-size: 2rem;
+}
+#highscore {
   margin-top: 10px;
   font-size: 30px;
   font-weight: 900;
